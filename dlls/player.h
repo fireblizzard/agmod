@@ -363,6 +363,8 @@ protected:
 
 	float m_fDisplayGamemode; //Next time to display gamemode.
 
+	float m_fFpsMaxNextQuery; //Next time to query client's fps_max
+
 	float m_fLongjumpTimer;   //Long jump timer.
 
 	Vector m_vKilled;         //Where the player got killed last time.
@@ -525,6 +527,8 @@ inline void CBasePlayer::Init()
 	m_iStatus = Invalid;
 
 	m_fDisplayGamemode = gpGlobals->time + 5;
+
+	m_fFpsMaxNextQuery = gpGlobals->time; // Check immediately if it's a new player
 
 	m_vKilled = g_vecZero;
 

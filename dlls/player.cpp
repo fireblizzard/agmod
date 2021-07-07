@@ -1974,10 +1974,10 @@ void CBasePlayer::PreThink(void)
 	if ( g_fGameOver )
 		return;         // intermission or finale
 
-	if (!(pev->flags & FL_FAKECLIENT))
+	if ( m_fFpsMaxNextQuery =< gpGlobals->time && !(pev->flags & FL_FAKECLIENT) )
 	{
-		// It will crash if we query upon a bot
 		g_engfuncs.pfnQueryClientCvarValue2(edict(), "fps_max", request_ids::REQUEST_ID_FPS_MAX);
+		m_fFpsMaxNextQuery = gpGlobals->time + ag_fps_limit_auto_check_interval.value;
 	}
 
   //++ BulliT
@@ -6065,11 +6065,11 @@ void CBasePlayer::LimitFps()
 
 	if (fpsLimit >= m_flFpsMax)
 		return;
-	
-	CLIENT_COMMAND(edict(), "fps_max %.6f\n", fpsLimit);
 
 	if (m_flNextFpsWarning < gpGlobals->time)
 	{
+		CLIENT_COMMAND(edict(), "fps_max %.6f\n", fpsLimit);
+
 		m_flNextFpsWarning = gpGlobals->time + ag_fps_limit_warnings_interval.value;
 		m_iFpsWarnings++;
 
