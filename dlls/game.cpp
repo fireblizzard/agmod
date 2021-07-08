@@ -41,6 +41,7 @@ cvar_t	teamlist = {"mp_teamlist","hgrunt;scientist", FCVAR_SERVER };
 cvar_t	teamoverride = {"mp_teamoverride","1" };
 cvar_t	defaultteam = {"mp_defaultteam","0" };
 cvar_t	allowmonsters={"mp_allowmonsters","0", FCVAR_SERVER };
+cvar_t  mp5_old_rate = { "sv_ag_mp5_old_rate", "0", FCVAR_SERVER };
 
 // mp_chattime is like the minimum intermission time, you can't skip it, it's meant
 // to have some time for saying gg, etc. before changing map, it's part of the intermission
@@ -499,6 +500,8 @@ void GameDLLInit( void )
 	CVAR_REGISTER (&teamoverride);
 	CVAR_REGISTER (&defaultteam);
 	CVAR_REGISTER (&allowmonsters);
+
+	CVAR_REGISTER (&mp5_old_rate);
 
 	CVAR_REGISTER (&mp_chattime);
 	CVAR_REGISTER (&mp_intermission_time);
