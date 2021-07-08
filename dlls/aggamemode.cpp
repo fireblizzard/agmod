@@ -213,10 +213,10 @@ void AgGameMode::Think()
             classifiedFpsMaxValues[closestValue]++;
         }
 
-        if (ag_fps_limit_auto_check_interval.value < MIN_FPS_LIMIT_CHECK_INTERVAL)
-            CVAR_SET_FLOAT("ag_fps_limit_auto_check_interval", MIN_FPS_LIMIT_CHECK_INTERVAL);
+        if (ag_fps_limit_check_interval.value < MIN_FPS_LIMIT_CHECK_INTERVAL)
+            CVAR_SET_FLOAT("ag_fps_limit_check_interval", MIN_FPS_LIMIT_CHECK_INTERVAL);
 
-        m_fNextFpsLimitCheck = gpGlobals->time + ag_fps_limit_auto_check_interval.value;
+        m_fNextFpsLimitCheck = gpGlobals->time + ag_fps_limit_check_interval.value;
 
         if (players == 0)
             return;

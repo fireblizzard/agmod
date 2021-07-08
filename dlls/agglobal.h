@@ -177,7 +177,7 @@ extern cvar_t ag_spawn_pa_safe_chance;
 
 extern cvar_t ag_fps_limit;
 extern cvar_t ag_fps_limit_auto;
-extern cvar_t ag_fps_limit_auto_check_interval;
+extern cvar_t ag_fps_limit_check_interval;
 extern cvar_t ag_fps_limit_match_only;
 extern cvar_t ag_fps_limit_steampipe;
 extern cvar_t ag_fps_limit_warnings;
