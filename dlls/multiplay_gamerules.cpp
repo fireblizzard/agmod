@@ -105,10 +105,18 @@ CHalfLifeMultiplay :: CHalfLifeMultiplay()
 	// Added lservercfg file cvar, since listen and dedicated servers should not
 	// share a single config file. (sjb)
 //++ BulliT
-/*
+
 	if ( IS_DEDICATED_SERVER() )
 	{
-		// this code has been moved into engine, to only run server.cfg once
+		//++ BulliT
+		char* servercfgfile = (char*)CVAR_GET_STRING("servercfgfile");
+		if (servercfgfile && servercfgfile[0])
+		{
+			char szCommand[256];
+
+			ALERT(at_console, "Executing dedicated server config file\n");
+			sprintf(szCommand, "exec %s\n", servercfgfile);
+			SERVER_COMMAND(szCommand);
 	}
 	else
 	{
@@ -124,7 +132,6 @@ CHalfLifeMultiplay :: CHalfLifeMultiplay()
 			SERVER_COMMAND( szCommand );
 		}
 	}
-  */
   //-- Martin Webrant
 }
 

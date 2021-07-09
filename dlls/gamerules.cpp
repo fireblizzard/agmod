@@ -323,16 +323,8 @@ AgGameRules* InstallGameRules(void)
 	SERVER_COMMAND( "exec game.cfg\n" );
 	SERVER_EXECUTE( );
 
-	//++ BulliT
-	char* servercfgfile = (char*)CVAR_GET_STRING("servercfgfile");
-	if (servercfgfile && servercfgfile[0])
-	{
-		char szCommand[256];
 
-		ALERT(at_console, "Executing dedicated server config file\n");
-		sprintf(szCommand, "exec %s\n", servercfgfile);
-		SERVER_COMMAND(szCommand);
-	}
+
 
 #ifndef AG_NO_CLIENT_DLL
 	//Detect CTF maps.
